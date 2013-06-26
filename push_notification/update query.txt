@@ -1,0 +1,12 @@
+UPDATE messages
+SET receivers
+= REPLACE(receivers,'(1)','')
+WHERE receivers like '%(1)%'
+
+SELECT messages.id AS 'id', clients.display_name AS 'from', messages.subject 'subject', messages.message AS 'message', messages.date AS 'date'
+FROM gcm_users, user_inbox, client_outbox, messages, clients
+WHERE gcm_users.gcm_regid = 'APA91bEch2pNWXUHBlt6ovWyhCAs_XBIcL1dXSZ2KBpVge_CZfhRFxjU7Xc-dcQlF-OHL1Sjlqc-yZEy18IVtLOrkL3udCquENOaWkttL-Z46HDw97WJuAYTIfLZnSq3rFW3hz_tzW9MgEE3LWozVi1a45gx_R4UNNfMcbh_Ya4Lw7Zt3L7W3B0'
+AND user_inbox.user_id = gcm_users.id
+AND user_inbox.message_id = messages.id
+AND messages.id = client_outbox.message_id
+AND client_outbox.client_id = clients.id

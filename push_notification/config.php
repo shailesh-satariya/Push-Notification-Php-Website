@@ -16,5 +16,5 @@ define("SITE_URL", "http://localhost/push_notification/");
 /*
  * Google API Key
  */
-define("GOOGLE_API_KEY", "AIzaSyC6J19yyqTMvj0BA654JhbxFH8cGEzYVWw"); // Place your Google API Key
+define("GOOGLE_API_KEY", ""); // Place your Google API Key
 ?>
